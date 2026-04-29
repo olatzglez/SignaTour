@@ -6,6 +6,7 @@ import sequelize from './config/db.js'
 import './models/index.js'
 
 import authRoutes from './routes/api/auth.routes.js'
+import itinerarioRoutes from './routes/api/itinerario.routes.js'
 import errorHandler from './middlewares/errorHandler.js'
 
 dotenv.config()
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 // ── Rutas API ───────────────────────────────────
 app.use('/api/auth', authRoutes)
+app.use('/api/itinerarios', itinerarioRoutes)
 
 // ── 404 ─────────────────────────────────────────
 app.use((req, res, next) => {
