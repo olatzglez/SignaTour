@@ -32,4 +32,38 @@ const detalle = async (req, res, next) => {
   }
 }
 
-export default { listar, detalle }
+/**
+ * GET /itinerarios/nuevo
+ * Muestra el formulario para crear un itinerario nuevo (solo admin).
+ */
+const mostrarFormulario = (req, res) => {
+  res.render('itinerarios/formulario', {
+    titulo: 'Nuevo itinerario',
+    rutaActiva: 'itinerarios',
+    usuario: req.usuario,
+    error: null,
+    valores: {},
+  })
+}
+
+/**
+ * POST /itinerarios/nuevo
+ * Procesa el formulario. En éxito, redirige al detalle. En error,
+ * vuelve a mostrar el formulario con el mensaje y los valores tecleados.
+ */
+const procesarFormulario = async (req, res, next) => {
+  try {
+    const itinerario = await itinerarioService.create(req.body, req.usuario.id)
+    res.redirect(`/itinerarios/${itinerario.id}`)
+  } catch (error) {
+    res.status(error.statusCode || 500).render('itinerarios/formulario', {
+      titulo: 'Nuevo itinerario',
+      rutaActiva: 'itinerarios',
+      usuario: req.usuario,
+      error: error.message,
+      valores: req.body,
+    })
+  }
+}
+
+export default { listar, detalle, mostrarFormulario, procesarFormulario }
