@@ -79,6 +79,7 @@ const seed = async () => {
       defaults: {
         titulo: 'Madrid de los Austrias accesible',
         descripcion: 'Recorrido por el Madrid histórico con paradas accesibles para personas sordas.',
+        provincia: 'Madrid',
         ciudad: 'Madrid',
         duracionMinutos: 120,
         publico: 'todos',
@@ -113,6 +114,7 @@ const seed = async () => {
       defaults: {
         titulo: 'Bilbao y el Guggenheim',
         descripcion: 'Ruta por el centro de Bilbao con visita accesible al museo.',
+        provincia: 'Bizkaia',
         ciudad: 'Bilbao',
         duracionMinutos: 180,
         publico: 'doce_mas',
@@ -137,6 +139,7 @@ const seed = async () => {
       defaults: {
         titulo: 'Sevilla nocturna para adultos',
         descripcion: 'Ruta nocturna por el casco antiguo con tapas y flamenco accesible.',
+        provincia: 'Sevilla',
         ciudad: 'Sevilla',
         duracionMinutos: 150,
         publico: 'adultos',

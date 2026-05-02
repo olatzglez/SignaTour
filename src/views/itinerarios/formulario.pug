@@ -1,0 +1,48 @@
+extends ../layouts/main
+
+block contenido
+  section.formulario-itinerario
+    a.volver(href="/itinerarios") ← Volver a itinerarios
+    h1 Nuevo itinerario
+    p.subtitulo Rellena los datos para crear un itinerario accesible.
+
+    if error
+      .alerta-error= error
+
+    form(method="POST" action="/itinerarios/nuevo" novalidate)
+      .campo
+        label(for="titulo") Título *
+        input#titulo(type="text" name="titulo" required value=valores.titulo autocomplete="off")
+
+      .campo
+        label(for="provincia") Provincia *
+        select#provincia(name="provincia" required)
+          option(value="" disabled selected=!valores.provincia) Selecciona una provincia
+          each prov in provincias
+            option(value=prov selected=valores.provincia === prov)= prov
+
+      .campo
+        label(for="ciudad") Ciudad *
+        input#ciudad(type="text" name="ciudad" required value=valores.ciudad autocomplete="off")
+
+      .campo
+        label(for="descripcion") Descripción
+        textarea#descripcion(name="descripcion" rows="4")= valores.descripcion
+
+      .campo
+        label(for="duracionMinutos") Duración (minutos) *
+        input#duracionMinutos(type="number" name="duracionMinutos" min="1" required value=valores.duracionMinutos)
+
+      .campo
+        label(for="publico") Público objetivo *
+        select#publico(name="publico" required)
+          option(value="" disabled selected=!valores.publico) Selecciona un público
+          option(value="todos" selected=valores.publico === 'todos') Todos los públicos
+          option(value="doce_mas" selected=valores.publico === 'doce_mas') A partir de 12 años
+          option(value="adultos" selected=valores.publico === 'adultos') Adultos
+
+      p.nota * Campos obligatorios
+
+      .acciones
+        a.boton-secundario(href="/itinerarios") Cancelar
+        button.boton-primario(type="submit") Crear itinerario

@@ -14,6 +14,10 @@ const Itinerario = sequelize.define('Itinerario', {
   descripcion: {
     type: DataTypes.TEXT,
   },
+  provincia: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   ciudad: {
     type: DataTypes.STRING,
     allowNull: false,

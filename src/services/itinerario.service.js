@@ -48,8 +48,8 @@ const getById = async (id) => {
  * Crea un itinerario nuevo, asociado al usuario admin que lo creó.
  */
 const create = async (datos, creadoPor) => {
-  if (!datos.titulo || !datos.ciudad) {
-    const error = new Error('Título y ciudad son obligatorios')
+  if (!datos.titulo || !datos.provincia || !datos.ciudad || !datos.duracionMinutos || !datos.publico) {
+    const error = new Error('Faltan campos obligatorios')
     error.statusCode = 400
     throw error
   }
@@ -57,9 +57,10 @@ const create = async (datos, creadoPor) => {
   const itinerario = await Itinerario.create({
     titulo: datos.titulo,
     descripcion: datos.descripcion,
+    provincia: datos.provincia,
     ciudad: datos.ciudad,
     duracionMinutos: datos.duracionMinutos,
-    publico: datos.publico || 'todos',
+    publico: datos.publico,
     creadoPor,
   })
 

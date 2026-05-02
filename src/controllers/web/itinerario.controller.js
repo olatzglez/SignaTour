@@ -1,4 +1,5 @@
 import itinerarioService from '../../services/itinerario.service.js'
+import { PROVINCIAS_ESPANA } from '../../constants/provincias.js'
 
 /**
  * GET /itinerarios
@@ -43,6 +44,7 @@ const mostrarFormulario = (req, res) => {
     usuario: req.usuario,
     error: null,
     valores: {},
+    provincias: PROVINCIAS_ESPANA,
   })
 }
 
@@ -62,6 +64,7 @@ const procesarFormulario = async (req, res, next) => {
       usuario: req.usuario,
       error: error.message,
       valores: req.body,
+      provincias: PROVINCIAS_ESPANA,
     })
   }
 }

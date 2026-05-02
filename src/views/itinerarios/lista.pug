@@ -13,7 +13,7 @@ block contenido
           li.tarjeta
             h2.tarjeta-titulo
               a(href=`/itinerarios/${it.id}`)= it.titulo
-            p.tarjeta-ciudad= it.ciudad
+            p.tarjeta-ciudad #{it.ciudad}, #{it.provincia}
             if it.descripcion
               p.tarjeta-descripcion= it.descripcion
             .tarjeta-meta

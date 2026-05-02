@@ -6,13 +6,13 @@ block contenido
       a.volver(href="/itinerarios") ← Volver a itinerarios
       h1= itinerario.titulo
       p.detalle-ciudad
-        span.icono 📍
-        | #{itinerario.ciudad}
+        span.icono
+        | #{itinerario.ciudad}, #{itinerario.provincia}
 
       .detalle-meta
         if itinerario.duracionMinutos
           span.meta
-            span.icono ⏱
+            span.icono
             | #{itinerario.duracionMinutos} min
         span.meta.publico(class=`publico-${itinerario.publico}`)
           if itinerario.publico === 'todos'
@@ -39,7 +39,7 @@ block contenido
                 h3.punto-nombre= punto.nombre
                 if punto.direccion
                   p.punto-direccion
-                    span.icono 📍
+                    span.icono
                     | #{punto.direccion}
                 if punto.descripcion
                   p.punto-descripcion= punto.descripcion
