@@ -1,0 +1,30 @@
+extends ../layouts/main
+
+block contenido
+  section.lista-itinerarios
+    h1 Itinerarios disponibles
+    p.subtitulo Descubre rutas culturales con recursos de accesibilidad.
+
+    if !itinerarios || itinerarios.length === 0
+      p.vacio Aún no hay itinerarios publicados.
+    else
+      ul.tarjetas
+        each it in itinerarios
+          li.tarjeta
+            h2.tarjeta-titulo
+              a(href=`/itinerarios/${it.id}`)= it.titulo
+            p.tarjeta-ciudad= it.ciudad
+            if it.descripcion
+              p.tarjeta-descripcion= it.descripcion
+            .tarjeta-meta
+              if it.duracionMinutos
+                span.meta
+                  span.icono ⏱
+                  | #{it.duracionMinutos} min
+              span.meta.publico(class=`publico-${it.publico}`)
+                if it.publico === 'todos'
+                  | Todos los públicos
+                else if it.publico === 'doce_mas'
+                  | A partir de 12 años
+                else
+                  | Adultos

@@ -1,0 +1,14 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="description" content="Plataforma de itinerarios culturales accesibles")
+    title= (titulo || 'Inicio') + ' · Itinerarios Accesibles'
+    link(rel="stylesheet" href="/css/styles.css")
+  body
+    a.skip-link(href="#contenido") Saltar al contenido principal
+    include ../partials/header
+    main#contenido.contenido
+      block contenido
+    include ../partials/footer

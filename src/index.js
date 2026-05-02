@@ -4,14 +4,27 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import sequelize from './config/db.js'
 import './models/index.js'
+import path from 'path'
+
 
 import authRoutes from './routes/api/auth.routes.js'
 import itinerarioRoutes from './routes/api/itinerario.routes.js'
+import homeRoutes from './routes/web/home.routes.js'
 import errorHandler from './middlewares/errorHandler.js'
+import { fileURLToPath } from 'url'
 
 dotenv.config()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
+
+// Motor de plantillas
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
+
+// Servir archivos estáticos (CSS, imágenes)
+app.use(express.static(path.join(__dirname, '..', 'public')))
 
 // ── Middlewares globales ────────────────────────
 app.use(morgan('dev'))                          // logs de cada petición
@@ -19,14 +32,17 @@ app.use(express.json())                         // parsea body JSON
 app.use(express.urlencoded({ extended: true })) // parsea body de formularios
 app.use(cookieParser())                         // parsea cookies de la petición
 
-// ── Ruta de prueba ──────────────────────────────
-app.get('/', (req, res) => {
-  res.send('Hola mundo desde Express')
-})
+// ── Rutas de la web ──────────────────────────────
+app.use('/', homeRoutes)
+app.use('/itinerarios', itinerarioWebRoutes)
+import itinerarioWebRoutes from './routes/web/itinerario.routes.js'
+import authWebRoutes from './routes/web/auth.routes.js'
+
 
 // ── Rutas API ───────────────────────────────────
 app.use('/api/auth', authRoutes)
 app.use('/api/itinerarios', itinerarioRoutes)
+app.use('/', authWebRoutes)
 
 // ── 404 ─────────────────────────────────────────
 app.use((req, res, next) => {

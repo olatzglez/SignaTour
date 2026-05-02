@@ -1,0 +1,24 @@
+extends ../layouts/main
+
+block contenido
+  section.formulario-auth
+    h1 Iniciar sesión
+    p.subtitulo Bienvenida de vuelta. Accede a tu cuenta.
+
+    if error
+      .alerta-error= error
+
+    form(method="POST" action="/login" novalidate)
+      .campo
+        label(for="email") Email
+        input#email(type="email" name="email" required value=valores.email autocomplete="email")
+
+      .campo
+        label(for="password") Contraseña
+        input#password(type="password" name="password" required minlength="8" autocomplete="current-password")
+
+      button.boton-primario(type="submit") Entrar
+
+    p.enlace-secundario
+      | ¿No tienes cuenta? 
+      a(href="/registro") Crea una cuenta aquí.

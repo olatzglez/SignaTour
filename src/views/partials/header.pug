@@ -1,0 +1,60 @@
+header.cabecera
+  .cabecera-contenedor
+    a.logo(href="/")
+      span.logo-icono ♿
+      span.logo-texto Itinerarios Accesibles
+
+    nav.nav-central
+      a.nav-link(href="/itinerarios" class=(rutaActiva === 'itinerarios' ? 'activo' : '')) Itinerarios
+      a.nav-link(href="/itinerarios?recurso=LSE" class=(rutaActiva === 'recursos' ? 'activo' : '')) Recursos accesibles
+
+    .menu-usuario
+      button.boton-avatar(type="button" id="botonAvatar" aria-haspopup="true" aria-expanded="false" aria-label="Abrir menú de usuario")
+        if usuario
+          span.avatar-inicial= usuario.nombre ? usuario.nombre.charAt(0).toUpperCase() : 'U'
+        else
+          span.avatar-icono ☰
+
+      .dropdown(id="menuDropdown" hidden)
+        if usuario
+          .dropdown-cabecera
+            strong= usuario.nombre || 'Usuaria'
+            small= usuario.email || ''
+          ul.dropdown-lista
+            li
+              a(href="/perfil")
+                span.icono 👤
+                | Mi perfil
+            if usuario.rol === 'admin'
+              li.divisor
+              li
+                a(href="/itinerarios/nuevo")
+                  span.icono ➕
+                  | Nuevo itinerario
+              li
+                a(href="/admin/recursos")
+                  span.icono 🛠
+                  | Gestionar recursos
+            li.divisor
+            li
+              form(method="POST" action="/logout")
+                button.dropdown-link-boton(type="submit")
+                  span.icono ↪
+                  | Cerrar sesión
+        else
+          ul.dropdown-lista
+            li
+              a(href="/login")
+                span.icono 🔑
+                | Iniciar sesión
+            li
+              a(href="/registro")
+                span.icono ✨
+                | Crear cuenta
+            li.divisor
+            li
+              a(href="/itinerarios")
+                span.icono 🗺
+                | Explorar itinerarios
+
+  script(src="/js/header.js")

@@ -1,0 +1,29 @@
+extends ../layouts/main
+
+block contenido
+  section.formulario-auth
+    h1 Crear cuenta
+    p.subtitulo Únete a la plataforma de itinerarios accesibles.
+
+    if error
+      .alerta-error= error
+
+    form(method="POST" action="/registro" novalidate)
+      .campo
+        label(for="nombre") Nombre
+        input#nombre(type="text" name="nombre" required value=valores.nombre autocomplete="name")
+
+      .campo
+        label(for="email") Email
+        input#email(type="email" name="email" required value=valores.email autocomplete="email")
+
+      .campo
+        label(for="password") Contraseña
+        input#password(type="password" name="password" required minlength="8" autocomplete="new-password")
+        small.ayuda Mínimo 8 caracteres
+
+      button.boton-primario(type="submit") Crear cuenta
+
+    p.enlace-secundario
+      | ¿Ya tienes cuenta? 
+      a(href="/login") Inicia sesión

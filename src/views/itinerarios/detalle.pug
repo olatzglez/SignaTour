@@ -1,0 +1,53 @@
+extends ../layouts/main
+
+block contenido
+  article.detalle-itinerario
+    header.detalle-cabecera
+      a.volver(href="/itinerarios") ← Volver a itinerarios
+      h1= itinerario.titulo
+      p.detalle-ciudad
+        span.icono 📍
+        | #{itinerario.ciudad}
+
+      .detalle-meta
+        if itinerario.duracionMinutos
+          span.meta
+            span.icono ⏱
+            | #{itinerario.duracionMinutos} min
+        span.meta.publico(class=`publico-${itinerario.publico}`)
+          if itinerario.publico === 'todos'
+            | Todos los públicos
+          else if itinerario.publico === 'doce_mas'
+            | A partir de 12 años
+          else
+            | Adultos
+
+    if itinerario.descripcion
+      section.detalle-descripcion
+        p= itinerario.descripcion
+
+    if itinerario.puntos && itinerario.puntos.length > 0
+      section.puntos
+        h2 Recorrido
+        p.subtitulo #{itinerario.puntos.length} #{itinerario.puntos.length === 1 ? 'parada' : 'paradas'}
+
+        ol.lista-puntos
+          each punto in itinerario.puntos
+            li.punto
+              .punto-numero= punto.orden
+              .punto-contenido
+                h3.punto-nombre= punto.nombre
+                if punto.direccion
+                  p.punto-direccion
+                    span.icono 📍
+                    | #{punto.direccion}
+                if punto.descripcion
+                  p.punto-descripcion= punto.descripcion
+                if punto.recursos && punto.recursos.length > 0
+                  .punto-recursos
+                    span.label Accesibilidad:
+                    ul.recursos
+                      each r in punto.recursos
+                        li.recurso(class=`recurso-${r.codigo}`)= r.nombre
+    else
+      p.vacio Este itinerario aún no tiene paradas definidas.
