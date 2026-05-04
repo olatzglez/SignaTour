@@ -6,7 +6,11 @@
 .hero {
   text-align: center;
   padding: 3rem 1rem 2.5rem;
-  background: linear-gradient(180deg, var(--color-primario-claro) 0%, var(--color-fondo) 100%);
+  background: linear-gradient(180deg, rgba(216, 243, 220, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%), url(/images/hero/img-hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   border-radius: var(--radio-grande);
   margin-bottom: 2rem;
 }
@@ -114,11 +118,11 @@
 .lista-puntos {
   list-style: none;
   position: relative;
-  padding-left: 1.2rem;
+  padding-left: 24px;
 }
 
 @media (min-width: 480px) {
-  .lista-puntos { padding-left: 2rem; }
+  .lista-puntos { padding-left: 37px; }
 }
 
 .lista-puntos::before {
