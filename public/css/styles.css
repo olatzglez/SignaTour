@@ -175,7 +175,14 @@ textarea:focus-visible {
 }
 
 .logo:hover { color: var(--color-primario); text-decoration: none; }
-.logo-icono { font-size: 1.5rem; }
+.logo-icono {
+  font-size: 1.5rem;
+  background-image: url(../images/logo/logo_signatour.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 176px;
+  height: 32px;
+ }
 .logo-texto { letter-spacing: -0.01em; }
 
 /* ---------- Botón hamburguesa (móvil) ---------- */
@@ -281,6 +288,7 @@ textarea:focus-visible {
 
 .dropdown-cabecera {
   padding: 0.8rem 1rem;
+
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -480,13 +488,13 @@ textarea:focus-visible {
 /* Tablet (768px+): nav central oculta, hamburguesa visible */
 @media (min-width: 768px) {
   .cabecera-contenedor { padding: 0.8rem 1.5rem; }
-  #contenido, .contenido { padding: 2rem 1.5rem; }
+  #contenido, .contenido { padding: 1.5rem 1rem; }
 }
 
 /* Escritorio (1024px+): nav central visible, hamburguesa oculta */
 @media (min-width: 1024px) {
-  .cabecera-contenedor { padding: 0.8rem 2rem; }
-  #contenido, .contenido { padding: 2rem; }
+  .cabecera-contenedor { padding: 0.8rem 1rem; }
+  #contenido, .contenido { padding: 2rem 1rem; }
   .nav-central { display: flex; }
   .boton-hamburguesa { display: none; }
 }

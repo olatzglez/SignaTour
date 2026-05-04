@@ -31,13 +31,13 @@
 }
 
 @media (min-width: 768px) {
-  .hero { padding: 5rem 2rem 4rem; margin-bottom: 3rem; }
+  .hero { padding: 3rem 2rem 3rem; margin-bottom: 1.5rem; }
   .hero h1 { font-size: 2.4rem; }
   .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
 }
 
 @media (min-width: 1024px) {
-  .hero h1 { font-size: 2.8rem; }
+  .hero h1 { font-size: 2.5rem; }
   .hero p { font-size: 1.15rem; }
 }
 
@@ -216,7 +216,7 @@
    Secciones de la home (sin carrusel)
    ============================================ */
 .seccion-home {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .seccion-cabecera {
@@ -234,7 +234,7 @@
 }
 
 @media (min-width: 768px) {
-  .seccion-cabecera h2 { font-size: 1.8rem; }
+  .seccion-cabecera h2 { font-size: 1.5em; }
 }
 
 .seccion-pie {
