@@ -2,29 +2,28 @@ extends ../layouts/main
 
 block contenido
   section.lista-itinerarios
-    h1 Itinerarios
-    p.subtitulo Descubre rutas culturales con recursos de accesibilidad.
-    div.lista-contenedor
-      if !itinerarios || itinerarios.length === 0
-        p.vacio Aún no hay itinerarios publicados.
-      else
-        ul.tarjetas
-          each it in itinerarios
-            - var slug = it.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s*\/\s*/g, '-').replace(/\s+/g, '-')
-            li.tarjeta.tarjeta--itinerario-imagen(style=`background-image: url('/images/ciudades/${slug}.jpg')`)
-              .tarjeta-itinerario-overlay
-              .tarjeta-itinerario-contenido
-                h3.tarjeta-titulo
-                  a(href=`/itinerarios/${it.id}`)= it.titulo
-                p.tarjeta-ciudad #{it.ciudad}, #{it.provincia}
-                if it.descripcion
-                  p.tarjeta-descripcion= it.descripcion
-                .tarjeta-meta
-                  span.meta(class=`publico-${it.publico}`)
-                    span.icono
-                    | #{it.publico === 'todos' ? 'Todos' : (it.publico === 'doce_mas' ? '+12' : 'Adultos')}
-                  if it.duracionMinutos
-                    span.meta
-                      span.icono ⏱
-                      | #{it.duracionMinutos} min
-                    
+    h1 Itinerarios accesibles
+    p.subtitulo Explora rutas culturales adaptadas con recursos de accesibilidad.
+
+    if itinerarios && itinerarios.length
+      ul.tarjetas
+        each it in itinerarios
+          - var slug = it.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s*\/\s*/g, '-').replace(/\s+/g, '-')
+          li.tarjeta.tarjeta--con-imagen
+            .tarjeta-imagen(style=`background-image: url('/images/ciudades/${slug}.jpg')`)
+            .tarjeta-cuerpo
+              h3.tarjeta-titulo
+                a(href=`/itinerarios/${it.id}`)= it.titulo
+              p.tarjeta-ciudad #{it.ciudad}, #{it.provincia}
+              if it.descripcion
+                p.tarjeta-descripcion= it.descripcion
+              .tarjeta-meta
+                span.meta(class=`publico-${it.publico}`)
+                  span.icono
+                  | #{it.publico === 'todos' ? 'Todos' : (it.publico === 'doce_mas' ? '+12' : 'Adultos')}
+                if it.duracionMinutos
+                  span.meta
+                    span.icono ⏱
+                    | #{it.duracionMinutos} min
+    else
+      p.vacio Aún no hay itinerarios disponibles.
