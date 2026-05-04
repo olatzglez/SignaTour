@@ -281,7 +281,6 @@ textarea:focus-visible {
 
 .dropdown-cabecera {
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--color-borde);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
