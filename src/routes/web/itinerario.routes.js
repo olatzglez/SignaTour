@@ -14,4 +14,7 @@ router.post('/nuevo', verifyToken, requireRole('admin'), itinerarioController.pr
 // Detalle (pública)
 router.get('/:id', optionalAuth, itinerarioController.detalle)
 
+// Eliminar (solo admin)
+router.post('/:id/eliminar', verifyToken, requireRole('admin'), itinerarioController.eliminar)
+
 export default router

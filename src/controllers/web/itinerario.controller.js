@@ -13,12 +13,17 @@ const listar = async (req, res, next) => {
       rutaActiva: 'itinerarios',
       usuario: req.usuario || null,
       itinerarios,
+      query: req.query,
     })
   } catch (error) {
     next(error)
   }
 }
 
+/**
+ * GET /itinerarios/:id
+ * Renderiza el detalle de un itinerario con sus puntos y recursos.
+ */
 const detalle = async (req, res, next) => {
   try {
     const itinerario = await itinerarioService.getById(req.params.id)
@@ -69,4 +74,18 @@ const procesarFormulario = async (req, res, next) => {
   }
 }
 
-export default { listar, detalle, mostrarFormulario, procesarFormulario }
+/**
+ * POST /itinerarios/:id/eliminar
+ * Elimina un itinerario (solo admin). Tras borrar, redirige a la lista
+ * con un parámetro ?eliminado=1 para que la vista muestre confirmación.
+ */
+const eliminar = async (req, res, next) => {
+  try {
+    await itinerarioService.remove(req.params.id)
+    res.redirect('/itinerarios?eliminado=1')
+  } catch (error) {
+    next(error)
+  }
+}
+
+export default { listar, detalle, mostrarFormulario, procesarFormulario, eliminar }

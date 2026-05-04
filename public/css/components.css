@@ -259,13 +259,19 @@
 }
 
 .formulario-auth h1,
-.formulario-itinerario h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+.formulario-itinerario h1 { font-size: 1.6rem; margin-bottom: 0.3rem; text-align: center; }
 
 .formulario-auth .subtitulo,
 .formulario-itinerario .subtitulo {
   color: var(--color-texto-secundario);
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.formulario-auth .boton-primario {
+  width: 100%;
+  margin-top: 16px;
 }
 
 .campo { margin-bottom: 1.2rem; }

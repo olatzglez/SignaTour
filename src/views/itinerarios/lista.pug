@@ -1,6 +1,8 @@
 extends ../layouts/main
 
 block contenido
+  if query && query.eliminado
+    .alerta-exito Itinerario eliminado correctamente.
   section.lista-itinerarios
     h1 Itinerarios accesibles
     p.subtitulo Explora rutas culturales adaptadas con recursos de accesibilidad.

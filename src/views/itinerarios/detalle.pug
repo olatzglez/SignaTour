@@ -51,3 +51,8 @@ block contenido
                         li.recurso(class=`recurso-${r.codigo}`)= r.nombre
     else
       p.vacio Este itinerario aún no tiene paradas definidas.
+
+    if usuario && usuario.rol === 'admin'
+      .acciones-admin
+        form(method="POST" action=`/itinerarios/${itinerario.id}/eliminar` onsubmit="return confirm('¿Seguro que quieres eliminar este itinerario? Esta acción no se puede deshacer.')")
+          button.boton-peligro(type="submit") Eliminar itinerario

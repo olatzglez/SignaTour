@@ -304,3 +304,52 @@
   transform: translateY(-4px);
   box-shadow: var(--sombra-fuerte);
 }
+
+/* ============================================
+   Botón de peligro (eliminar)
+   ============================================ */
+.boton-peligro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tamano-toque-min);
+  padding: 0.8rem 1.5rem;
+  background: #b91c1c;
+  color: #fff;
+  border: 2px solid #b91c1c;
+  border-radius: var(--radio-pequeno);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.boton-peligro:hover {
+  background: #991b1b;
+  border-color: #991b1b;
+  transform: translateY(-1px);
+}
+
+.acciones-admin {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-borde);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   Alerta de éxito (operación completada)
+   ============================================ */
+.alerta-exito {
+  background: var(--color-primario-claro);
+  color: var(--color-primario-oscuro);
+  border-left: 4px solid var(--color-primario);
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radio-pequeno);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
