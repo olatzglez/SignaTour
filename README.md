@@ -100,40 +100,53 @@ npm install
 3. Configurar variables de entorno:
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 ```bash
-PORT=3000
+PORT=4567
 
 DB_HOST=localhost
 DB_PORT=5434
 DB_NAME=itinerarios
-DB_USER=postgres
-DB_PASSWORD=postgres
+DB_USER=itinerarios
+DB_PASSWORD=tu_contraseña_de_postgres
 
-JWT_SECRET=supersecretkey
+JWT_SECRET=tu_cadena_secreta_aleatoria
 ```
+
+> Los valores reales que esperan los contenedores de Docker (definidos en `docker-compose.yml`) son `itinerarios_pass` para la BD. Para producción, generar valores propios y nunca commitearlos.
 ---
 
 ## Bases de datos con Docker
 Levantar los contenedores de PostgreSQL y pgAdmin:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
-Acceso a pgAdmin
-* URL: http://localhost:5050
-* Email: [DATO A COMPLETAR]
-* Password: [DATO A COMPLETAR]
+
+### Acceso a pgAdmin
+
+- URL: http://localhost:5050
+- Email: `admin@itinerarios.local`
+- Password: `admin`
+
+> **Para registrar el servidor en pgAdmin**, usar como host `itinerarios_db` (nombre del contenedor en la red Docker), puerto `5432` (puerto interno), y las credenciales de la BD del paso anterior.
+
+---
 
 ## Seed de datos
 Para poblar la base de datos con datos iniciales:
 
 ```bash
-node src/seeders/seed.js
+npm run seed
 ```
-Este script es idempotente (usa findOrCreate).
+El script es idempotente (usa `findOrCreate`) y crea:
 
-| Rol   | Email                                                         | Password  |
-| ----- | ------------------------------------------------------------- | --------- |
-| Admin | [admin@itinerarios.local](mailto:admin@itinerarios.local)     | admin1234 |
-| User  | [usuario@itinerarios.local](mailto:usuario@itinerarios.local) | admin1234 |
+- 5 recursos de accesibilidad (LSE, subtítulos, signoguía, bucle magnético, lectura fácil).
+- 6 itinerarios de ejemplo en Madrid, Bilbao, Sevilla, Barcelona, Donostia y Granada.
+- Dos usuarios de prueba:
+
+| Rol   | Email                       | Password    |
+|-------|-----------------------------|-------------|
+| Admin | admin@itinerarios.local     | admin1234   |
+| User  | usuario@itinerarios.local   | admin1234   |
+
 
 ## Ejecución del proyecto
 Modo desarrollo:
@@ -147,10 +160,11 @@ npm start
 ```
 
 La aplicación estará disponible en:
--> http://localhost:3000
+-> http://localhost:4567
 
 ## Autenticación
 El sistema utiliza JWT almacenado en:
+
 * Cookie httpOnly (para SSR)
 * Header Authorization (para API)
 
@@ -158,57 +172,67 @@ El sistema utiliza JWT almacenado en:
 
 API REST
 
-| Método | Endpoint             | Descripción         |
-| ------ | -------------------- | ------------------- |
-| POST   | /api/auth/register   | Registro            |
-| POST   | /api/auth/login      | Login               |
-| GET    | /api/auth/me         | Usuario autenticado |
-| GET    | /api/itinerarios     | Lista pública       |
-| GET    | /api/itinerarios/:id | Detalle             |
-| POST   | /api/itinerarios     | Crear (admin)       |
-| PATCH  | /api/itinerarios/:id | Actualizar (admin)  |
-| DELETE | /api/itinerarios/:id | Eliminar (admin)    |
+| Método | Endpoint             | Descripción         | Auth   |
+|--------|----------------------|---------------------|--------|
+| POST   | /api/auth/register   | Registro            | No     |
+| POST   | /api/auth/login      | Login               | No     |
+| GET    | /api/auth/me         | Usuario autenticado | Sí     |
+| GET    | /api/itinerarios     | Lista pública       | No     |
+| GET    | /api/itinerarios/:id | Detalle             | No     |
+| POST   | /api/itinerarios     | Crear               | Admin  |
+| PATCH  | /api/itinerarios/:id | Actualizar          | Admin  |
+| DELETE | /api/itinerarios/:id | Eliminar            | Admin  |
 
 RUTAS WEB (SSR)
-| Método   | Ruta               | Descripción   |
-| -------- | ------------------ | ------------- |
-| GET      | /                  | Home          |
-| GET/POST | /login             | Login         |
-| GET/POST | /registro          | Registro      |
-| POST     | /logout            | Logout        |
-| GET      | /itinerarios       | Lista         |
-| GET      | /itinerarios/nuevo | Crear (admin) |
-| POST     | /itinerarios/nuevo | Guardar       |
-| GET      | /itinerarios/:id   | Detalle       |
+| Método   | Ruta                       | Descripción              |
+|----------|----------------------------|--------------------------|
+| GET      | /                          | Home                     |
+| GET/POST | /login                     | Login                    |
+| GET/POST | /registro                  | Registro                 |
+| POST     | /logout                    | Logout                   |
+| GET      | /itinerarios               | Lista                    |
+| GET      | /itinerarios/nuevo         | Crear (admin)            |
+| POST     | /itinerarios/nuevo         | Guardar nuevo (admin)    |
+| GET      | /itinerarios/:id           | Detalle                  |
+| POST     | /itinerarios/:id/eliminar  | Eliminar (admin)         |
 
 ## Accesibilidad (WCAG 2.1 AA)
-* Contraste mínimo 4.5:1
-* Navegación por teclado
-* Focus visible (outline 3px)
+- Contraste mínimo 4.5:1 en todo el texto.
+- Navegación completa por teclado.
+- Focus visible (outline 3px).
+- Tamaño mínimo de toque 44x44 px.
+- Soporte de `prefers-reduced-motion`.
+- Mobile-first con tres breakpoints (480, 768, 1024).
+- Menú lateral móvil con atributos ARIA y cierre por Escape.
 
 
 ## Arquitectura
-* SSR con PUG + API REST
-* Capa de servicios compartida
-* Middlewares reutilizables (requireRole)
-* Manejo centralizado de errores
-* Sequelize con sync({ alter: true }) en desarrollo
+- SSR con PUG + API REST con Express.
+- Capa de servicios compartida entre la API y las vistas.
+- Middlewares reutilizables (`verifyToken`, `requireRole`).
+- Manejo centralizado de errores con `statusCode` propagado.
+- Sequelize con `sync({ alter: true })` en desarrollo.
 
 ## Testing
-Se han realizado pruebas manuales:
-* Login incorrecto → 401
-* Acceso sin permisos → 403
-* Validación de formularios
-* Navegación con teclado
+Se han realizado pruebas manuales sobre los flujos críticos:
+
+- Login con credenciales correctas e incorrectas (401).
+- Acceso a rutas admin sin permisos (403).
+- Validación de campos obligatorios en el formulario.
+- Eliminación con confirmación previa.
+- Navegación completa con teclado.
+- Reflujo a 320 px sin scroll horizontal.
 
 ## Mejoras a futuro
-* Subida de imágenes propias
-* Filtros y paginación
-* Inclusión de mapas
-* Traducciones (euskera, catalán, gallego)
-* Testing automatizado (Jest)
-* Documentación API (Swagger)
+- Subida de imágenes propias por itinerario.
+- Filtros y paginación en la lista.
+- Mapas interactivos con OpenStreetMap.
+- Traducciones a euskera, catalán y gallego.
+- Testing automatizado (Jest + Supertest).
+- Documentación API con Swagger / OpenAPI.
 
 ## Autoría
-Olatz González García https://github.com/olatzglez/
+Olatz González García — [@olatzglez](https://github.com/olatzglez)
+
+Proyecto Full Stack individual · Mayo 2026
 
