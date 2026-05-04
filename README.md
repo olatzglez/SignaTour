@@ -1,12 +1,12 @@
-# Itinerarios Accesibles
+# SignaTour
 
 Plataforma web para la exploración de itinerarios culturales adaptados a personas sordas o con discapacidad auditiva. Permite consultar rutas accesibles y gestionar itinerarios mediante un sistema de roles.
 
 ---
 
-## 🧩 Descripción
+## Descripción
 
-**Itinerarios Accesibles** es una aplicación Full Stack desarrollada como proyecto académico individual. Ofrece itinerarios culturales (museos, calles, monumentos) que incluyen información sobre recursos de accesibilidad como:
+**SignaTour** es una aplicación Full Stack desarrollada como proyecto académico individual. Ofrece itinerarios culturales (museos, calles, monumentos) que incluyen información sobre recursos de accesibilidad como:
 
 - Lengua de Signos Española (LSE)
 - Subtítulos
@@ -23,7 +23,7 @@ La aplicación cuenta con:
 
 ---
 
-## 🚀 Tecnologías utilizadas
+##  Tecnologías utilizadas
 
 ### Backend
 - Node.js
@@ -45,7 +45,7 @@ La aplicación cuenta con:
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 .
 ├── public/
 │ ├── css/
@@ -72,7 +72,7 @@ La aplicación cuenta con:
 
 ---
 
-## ⚙️ Requisitos previos
+## Requisitos previos
 
 Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
@@ -83,7 +83,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
 ---
 
-## 📦 Instalación
+## Instalación
 
 1. Clonar el repositorio:
 
@@ -150,7 +150,6 @@ La aplicación estará disponible en:
 -> http://localhost:3000
 
 ## Autenticación
-
 El sistema utiliza JWT almacenado en:
 * Cookie httpOnly (para SSR)
 * Header Authorization (para API)
@@ -183,7 +182,6 @@ RUTAS WEB (SSR)
 | GET      | /itinerarios/:id   | Detalle       |
 
 ## Accesibilidad (WCAG 2.1 AA)
-
 * Contraste mínimo 4.5:1
 * Navegación por teclado
 * Focus visible (outline 3px)
@@ -213,7 +211,4 @@ Se han realizado pruebas manuales:
 
 ## Autoría
 Olatz González García https://github.com/olatzglez/
-
-
-
 

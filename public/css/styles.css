@@ -442,21 +442,32 @@ textarea:focus-visible {
   background: #1a1e0d;
   color: #d8f3dc;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem;
   margin-top: 4rem;
 }
 
 .pie a { color: #fff; }
 
 .pie-contenedor {
-  max-width: var(--max-ancho);
   margin: 0 auto;
   font-size: 0.9rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.4rem;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .pie-contenedor { flex-direction: row; align-items: center; }
+}
+
+@media (min-width: 1024px) {
+  .pie-contenedor { 
+    flex-direction: row; 
+    align-items: center; 
+    max-width: var(--max-ancho);
+   }
 }
 
 /* ============================================
