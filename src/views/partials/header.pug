@@ -1,18 +1,16 @@
 header.cabecera
   .cabecera-contenedor
-    button.boton-hamburguesa(type="button" id="botonHamburguesa" aria-label="Abrir menú de navegación" aria-controls="menuLateral" aria-expanded="false")
-      span.hamburguesa-icono
-        span
-        span
-        span
 
     a.logo(href="/")
-      span.logo-icono ♿
+      span.logo-icono
       span.logo-texto Itinerarios Accesibles
 
     nav.nav-central(aria-label="Navegación principal")
       a.nav-link(href="/itinerarios" class=(rutaActiva === 'itinerarios' ? 'activo' : '')) Itinerarios
+      a.nav-link(# class=(rutaActiva === 'recursos' ? 'activo' : '')) Ciudades 
       a.nav-link(href="/itinerarios?recurso=LSE" class=(rutaActiva === 'recursos' ? 'activo' : '')) Recursos accesibles
+      
+      
 
     .menu-usuario
       button.boton-avatar(type="button" id="botonAvatar" aria-haspopup="true" aria-expanded="false" aria-label="Abrir menú de usuario")
@@ -29,17 +27,17 @@ header.cabecera
           ul.dropdown-lista
             li
               a(href="/perfil")
-                span.icono 👤
+                span.icono
                 | Mi perfil
             if usuario.rol === 'admin'
               li.divisor
               li
                 a(href="/itinerarios/nuevo")
-                  span.icono ➕
+                  span.icono
                   | Nuevo itinerario
               li
                 a(href="/admin/recursos")
-                  span.icono 🛠
+                  span.icono
                   | Gestionar recursos
             li.divisor
             li
@@ -51,17 +49,12 @@ header.cabecera
           ul.dropdown-lista
             li
               a(href="/login")
-                span.icono 🔑
+                span.icono
                 | Iniciar sesión
             li
               a(href="/registro")
-                span.icono ✨
+                span.icono
                 | Crear cuenta
-            li.divisor
-            li
-              a(href="/itinerarios")
-                span.icono 🗺
-                | Explorar itinerarios
 
   // Menú lateral móvil
   .menu-lateral-overlay(id="menuLateralOverlay")

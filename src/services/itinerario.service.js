@@ -96,4 +96,14 @@ const remove = async (id) => {
   await itinerario.destroy()
 }
 
-export default { getAll, getById, create, update, remove }
+const getCiudades = async () => {
+  const ciudades = await Itinerario.findAll({
+    attributes: ['ciudad', 'provincia'],
+    group: ['ciudad', 'provincia'],
+    order: [['ciudad', 'ASC']],
+    raw: true,
+  })
+  return ciudades
+}
+
+export default { getAll, getById, create, update, remove, getCiudades }

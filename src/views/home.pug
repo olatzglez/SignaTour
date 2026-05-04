@@ -4,4 +4,49 @@ block contenido
   section.hero
     h1 Cultura accesible para todas las personas
     p Descubre itinerarios culturales adaptados con lengua de signos, subtítulos, signoguías, bucle magnético y lectura fácil.
-    a.boton(href="/itinerarios") Ver itinerarios
+    a.boton-primario(href="/itinerarios") Ver itinerarios
+
+  section.seccion-home
+    .seccion-cabecera
+      h2 Itinerarios destacados
+      p.subtitulo Selección de rutas accesibles para descubrir.
+
+    ul.tarjetas
+      each it in itinerariosDestacados
+        - var slug = it.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s*\/\s*/g, '-').replace(/\s+/g, '-')
+        li.tarjeta.tarjeta--con-imagen
+          .tarjeta-imagen(style=`background-image: url('/images/ciudades/${slug}.jpg')`)
+          .tarjeta-cuerpo
+            h3.tarjeta-titulo
+              a(href=`/itinerarios/${it.id}`)= it.titulo
+            p.tarjeta-ciudad #{it.ciudad}, #{it.provincia}
+            if it.descripcion
+              p.tarjeta-descripcion= it.descripcion
+            .tarjeta-meta
+              span.meta(class=`publico-${it.publico}`)
+                span.icono 👥
+                | #{it.publico === 'todos' ? 'Todos' : (it.publico === 'doce_mas' ? '+12' : 'Adultos')}
+              if it.duracionMinutos
+                span.meta
+                  span.icono ⏱
+                  | #{it.duracionMinutos} min
+
+    .seccion-pie
+      a.boton-primario(href="/itinerarios") Todos los itinerarios
+
+  section.seccion-home
+    .seccion-cabecera
+      h2 Ciudades
+      p.subtitulo Explora itinerarios por destino.
+
+    ul.tarjetas
+      each c in ciudades
+        - var slug = c.ciudad.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s*\/\s*/g, '-').replace(/\s+/g, '-')
+        li.tarjeta.tarjeta--ciudad(style=`background-image: url('/images/ciudades/${slug}.jpg')`)
+          .tarjeta-ciudad-overlay
+          .tarjeta-ciudad-contenido
+            h3.tarjeta-titulo= c.ciudad
+            p.tarjeta-ciudad= c.provincia
+
+    .seccion-pie
+      a.boton-primario(href="/ciudades") Todas las ciudades

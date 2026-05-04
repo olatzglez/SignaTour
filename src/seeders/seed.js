@@ -158,6 +158,131 @@ const seed = async () => {
       await punto.addRecursos([bucle, subtitulos])
     }
 
+    // Itinerario 4
+    const [it4, creado4] = await Itinerario.findOrCreate({
+      where: { titulo: 'Barcelona modernista accesible' },
+      defaults: {
+        titulo: 'Barcelona modernista accesible',
+        descripcion: 'Recorrido por las obras maestras de Gaudí con recursos para personas sordas.',
+        provincia: 'Barcelona',
+        ciudad: 'Barcelona',
+        duracionMinutos: 150,
+        publico: 'doce_mas',
+        creadoPor: admin.id,
+      },
+    })
+    if (creado4) {
+      const punto1 = await PuntoInteres.create({
+        nombre: 'Sagrada Família',
+        direccion: 'C/ de Mallorca, 401, 08013 Barcelona',
+        descripcion: 'Visitas guiadas en LSE bajo reserva y signoguías disponibles.',
+        latitud: 41.4036, longitud: 2.1744,
+        orden: 1,
+        itinerarioId: it4.id,
+      })
+      await punto1.addRecursos([lse, signoguia, lectura])
+
+      const punto2 = await PuntoInteres.create({
+        nombre: 'Casa Batlló',
+        direccion: 'Pg. de Gràcia, 43, 08007 Barcelona',
+        descripcion: 'Audioguía con subtítulos y vídeos en LSE en sala.',
+        latitud: 41.3917, longitud: 2.1649,
+        orden: 2,
+        itinerarioId: it4.id,
+      })
+      await punto2.addRecursos([subtitulos, lse])
+
+      const punto3 = await PuntoInteres.create({
+        nombre: 'Park Güell',
+        direccion: 'C/ d\'Olot, 08024 Barcelona',
+        descripcion: 'Paneles informativos en lectura fácil por todo el recorrido.',
+        latitud: 41.4145, longitud: 2.1527,
+        orden: 3,
+        itinerarioId: it4.id,
+      })
+      await punto3.addRecursos([lectura, signoguia])
+    }
+
+    // Itinerario 5
+    const [it5, creado5] = await Itinerario.findOrCreate({
+      where: { titulo: 'Donostia gastronómica' },
+      defaults: {
+        titulo: 'Donostia gastronómica',
+        descripcion: 'Ruta de pintxos por la Parte Vieja con bucle magnético y subtítulos.',
+        provincia: 'Gipuzkoa',
+        ciudad: 'Donostia / San Sebastián',
+        duracionMinutos: 120,
+        publico: 'adultos',
+        creadoPor: admin.id,
+      },
+    })
+    if (creado5) {
+      const punto1 = await PuntoInteres.create({
+        nombre: 'Mercado de la Bretxa',
+        direccion: 'Pl. de Sarriegi, 1, 20003 Donostia',
+        descripcion: 'Mercado tradicional con paneles en lectura fácil sobre productos locales.',
+        latitud: 43.3236, longitud: -1.9836,
+        orden: 1,
+        itinerarioId: it5.id,
+      })
+      await punto1.addRecursos([lectura])
+
+      const punto2 = await PuntoInteres.create({
+        nombre: 'Parte Vieja - Calle 31 de Agosto',
+        direccion: 'C/ 31 de Agosto, 20003 Donostia',
+        descripcion: 'Bares de pintxos con bucle magnético y menús con subtítulos en pantallas.',
+        latitud: 43.3253, longitud: -1.9844,
+        orden: 2,
+        itinerarioId: it5.id,
+      })
+      await punto2.addRecursos([bucle, subtitulos])
+    }
+
+    // Itinerario 6
+    const [it6, creado6] = await Itinerario.findOrCreate({
+      where: { titulo: 'Granada y la Alhambra' },
+      defaults: {
+        titulo: 'Granada y la Alhambra',
+        descripcion: 'Visita al conjunto monumental nazarí y al barrio del Albaicín con recursos accesibles.',
+        provincia: 'Granada',
+        ciudad: 'Granada',
+        duracionMinutos: 180,
+        publico: 'todos',
+        creadoPor: admin.id,
+      },
+    })
+    if (creado6) {
+      const punto1 = await PuntoInteres.create({
+        nombre: 'Alhambra - Palacios Nazaríes',
+        direccion: 'C/ Real de la Alhambra, s/n, 18009 Granada',
+        descripcion: 'Signoguías en LSE y audioguías con subtítulos.',
+        latitud: 37.1773, longitud: -3.5880,
+        orden: 1,
+        itinerarioId: it6.id,
+      })
+      await punto1.addRecursos([signoguia, lse, subtitulos])
+
+      const punto2 = await PuntoInteres.create({
+        nombre: 'Mirador de San Nicolás',
+        direccion: 'Pl. Mirador de San Nicolás, 18010 Granada',
+        descripcion: 'Mirador con paneles informativos en lectura fácil sobre la vista a la Alhambra.',
+        latitud: 37.1808, longitud: -3.5942,
+        orden: 2,
+        itinerarioId: it6.id,
+      })
+      await punto2.addRecursos([lectura])
+
+      const punto3 = await PuntoInteres.create({
+        nombre: 'Catedral de Granada',
+        direccion: 'C/ Gran Vía de Colón, 5, 18001 Granada',
+        descripcion: 'Visitas con bucle magnético en la sala principal.',
+        latitud: 37.1765, longitud: -3.5985,
+        orden: 3,
+        itinerarioId: it6.id,
+      })
+      await punto3.addRecursos([bucle, signoguia])
+    }
+
     console.log('✓ Itinerarios de prueba listos')
     console.log('🎉 Seed completado')
     process.exit(0)
