@@ -46,28 +46,33 @@ La aplicación cuenta con:
 ---
 
 ## Estructura del proyecto
+
+```
 .
 ├── public/
-│ ├── css/
-│ ├── js/
-│ └── images/ciudades/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│       ├── ciudades/
+│       └── logo/
 ├── src/
-│ ├── config/
-│ ├── constants/
-│ ├── controllers/
-│ │ ├── api/
-│ │ └── web/
-│ ├── middlewares/
-│ ├── models/
-│ ├── routes/
-│ │ ├── api/
-│ │ └── web/
-│ ├── seeders/
-│ ├── services/
-│ └── views/
+│   ├── config/
+│   ├── constants/
+│   ├── controllers/
+│   │   ├── api/
+│   │   └── web/
+│   ├── middlewares/
+│   ├── models/
+│   ├── routes/
+│   │   ├── api/
+│   │   └── web/
+│   ├── seeders/
+│   ├── services/
+│   └── views/
 ├── docker-compose.yml
 ├── package.json
 └── README.md
+```
 
 
 ---
