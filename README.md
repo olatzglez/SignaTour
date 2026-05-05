@@ -226,10 +226,19 @@ Se han realizado pruebas manuales sobre los flujos críticos:
 ## Mejoras a futuro
 - Subida de imágenes propias por itinerario.
 - Filtros y paginación en la lista.
-- Mapas interactivos con OpenStreetMap.
-- Traducciones a euskera, catalán y gallego.
+- Guardar itinerarios a Favoritos.
+- Mapas interactivos e integración con Google Maps.
+- Traducciones a euskera, catalá y galego.
 - Testing automatizado (Jest + Supertest).
 - Documentación API con Swagger / OpenAPI.
+
+## Uso de IA en el desarrollo
+
+Se ha utilizado **Claude (Anthropic)** como herramienta de apoyo durante el desarrollo: resolución de dudas técnicas, depuración de errores y apoyo en la redacción de la documentación.
+
+Las decisiones de arquitectura, diseño funcional y UX se han mantenido bajo criterio propio. La autoría intelectual del proyecto es plenamente personal.
+
+Detalles ampliados en la sección 9 de la memoria técnica.
 
 ## Autoría
 Olatz González García — [@olatzglez](https://github.com/olatzglez)
