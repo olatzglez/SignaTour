@@ -4,7 +4,7 @@ Plataforma web para la exploración de itinerarios culturales adaptados a person
 
 ---
 
-## Descripción
+## 📖 Descripción
 
 **SignaTour** es una aplicación Full Stack desarrollada como proyecto académico individual. Ofrece itinerarios culturales (museos, calles, monumentos) que incluyen información sobre recursos de accesibilidad como:
 
@@ -23,7 +23,7 @@ La aplicación cuenta con:
 
 ---
 
-##  Tecnologías utilizadas
+## 🛠️ Tecnologías utilizadas
 
 ### Backend
 - Node.js
@@ -45,7 +45,7 @@ La aplicación cuenta con:
 
 ---
 
-## Estructura del proyecto
+## 📁 Estructura del proyecto
 
 ```
 SignaTour/
@@ -76,7 +76,7 @@ SignaTour/
 
 ---
 
-## Requisitos previos
+## ✅ Requisitos previos
 
 Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
@@ -87,7 +87,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
 ---
 
-## Instalación
+## 🚀 Instalación
 
 1. Clonar el repositorio:
 
@@ -118,7 +118,7 @@ JWT_SECRET=tu_cadena_secreta_aleatoria
 > Los valores reales que esperan los contenedores de Docker (definidos en `docker-compose.yml`) son `itinerarios_pass` para la BD. Para producción, generar valores propios y nunca commitearlos.
 ---
 
-## Bases de datos con Docker
+## 🐳 Bases de datos con Docker
 Levantar los contenedores de PostgreSQL y pgAdmin:
 ```bash
 docker compose up -d
@@ -134,7 +134,7 @@ docker compose up -d
 
 ---
 
-## Seed de datos
+## 🌱 Seed de datos
 Para poblar la base de datos con datos iniciales:
 
 ```bash
@@ -152,7 +152,7 @@ El script es idempotente (usa `findOrCreate`) y crea:
 | User  | usuario@itinerarios.local   | admin1234   |
 
 
-## Ejecución del proyecto
+## ▶️ Ejecución del proyecto
 Modo desarrollo:
 ```bash
 npm run dev
@@ -166,13 +166,13 @@ npm start
 La aplicación estará disponible en:
 -> http://localhost:4567
 
-## Autenticación
+## 🔑 Autenticación
 El sistema utiliza JWT almacenado en:
 
 * Cookie httpOnly (para SSR)
 * Header Authorization (para API)
 
-## Endpoints principales
+## 📡 Endpoints principales
 
 API REST
 
@@ -200,7 +200,7 @@ RUTAS WEB (SSR)
 | GET      | /itinerarios/:id           | Detalle                  |
 | POST     | /itinerarios/:id/eliminar  | Eliminar (admin)         |
 
-## Accesibilidad (WCAG 2.1 AA)
+## ♿ Accesibilidad (WCAG 2.1 AA)
 - Contraste mínimo 4.5:1 en todo el texto.
 - Navegación completa por teclado.
 - Focus visible (outline 3px).
@@ -210,14 +210,14 @@ RUTAS WEB (SSR)
 - Menú lateral móvil con atributos ARIA y cierre por Escape.
 
 
-## Arquitectura
+## 🏗️ Arquitectura
 - SSR con PUG + API REST con Express.
 - Capa de servicios compartida entre la API y las vistas.
 - Middlewares reutilizables (`verifyToken`, `requireRole`).
 - Manejo centralizado de errores con `statusCode` propagado.
 - Sequelize con `sync({ alter: true })` en desarrollo.
 
-## Testing
+## 🧪 Testing
 Se han realizado pruebas manuales sobre los flujos críticos:
 
 - Login con credenciales correctas e incorrectas (401).
@@ -227,7 +227,7 @@ Se han realizado pruebas manuales sobre los flujos críticos:
 - Navegación completa con teclado.
 - Reflujo a 320 px sin scroll horizontal.
 
-## Mejoras a futuro
+## 🔮 Mejoras a futuro
 - Subida de imágenes propias por itinerario.
 - Filtros y paginación en la lista.
 - Guardar itinerarios a Favoritos.
@@ -236,7 +236,7 @@ Se han realizado pruebas manuales sobre los flujos críticos:
 - Testing automatizado (Jest + Supertest).
 - Documentación API con Swagger / OpenAPI.
 
-## Uso de IA en el desarrollo
+## 🤖 Uso de IA en el desarrollo
 
 Se ha utilizado **Claude (Anthropic)** como herramienta de apoyo durante el desarrollo: resolución de dudas técnicas, depuración de errores y apoyo en la redacción de la documentación.
 
@@ -244,7 +244,7 @@ Las decisiones de arquitectura, diseño funcional y UX se han mantenido bajo cri
 
 Detalles ampliados en la sección 9 de la memoria técnica.
 
-## Autoría
+## 👩‍💻 Autoría
 Olatz González García — [@olatzglez](https://github.com/olatzglez)
 
 Proyecto Full Stack individual · Mayo 2026
