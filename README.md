@@ -116,6 +116,7 @@ JWT_SECRET=tu_cadena_secreta_aleatoria
 ```
 
 > Los valores reales que esperan los contenedores de Docker (definidos en `docker-compose.yml`) son `itinerarios_pass` para la BD. Para producción, generar valores propios y nunca commitearlos.
+
 ---
 
 ## 🐳 Bases de datos con Docker
@@ -151,6 +152,7 @@ El script es idempotente (usa `findOrCreate`) y crea:
 | Admin | admin@itinerarios.local     | admin1234   |
 | User  | usuario@itinerarios.local   | admin1234   |
 
+---
 
 ## ▶️ Ejecución del proyecto
 Modo desarrollo:
@@ -166,11 +168,15 @@ npm start
 La aplicación estará disponible en:
 -> http://localhost:4567
 
+---
+
 ## 🔑 Autenticación
 El sistema utiliza JWT almacenado en:
 
 * Cookie httpOnly (para SSR)
 * Header Authorization (para API)
+
+---
 
 ## 📡 Endpoints principales
 
@@ -187,6 +193,7 @@ API REST
 | PATCH  | /api/itinerarios/:id | Actualizar          | Admin  |
 | DELETE | /api/itinerarios/:id | Eliminar            | Admin  |
 
+
 RUTAS WEB (SSR)
 | Método   | Ruta                       | Descripción              |
 |----------|----------------------------|--------------------------|
@@ -200,6 +207,8 @@ RUTAS WEB (SSR)
 | GET      | /itinerarios/:id           | Detalle                  |
 | POST     | /itinerarios/:id/eliminar  | Eliminar (admin)         |
 
+---
+
 ## ♿ Accesibilidad (WCAG 2.1 AA)
 - Contraste mínimo 4.5:1 en todo el texto.
 - Navegación completa por teclado.
@@ -209,6 +218,7 @@ RUTAS WEB (SSR)
 - Mobile-first con tres breakpoints (480, 768, 1024).
 - Menú lateral móvil con atributos ARIA y cierre por Escape.
 
+---
 
 ## 🏗️ Arquitectura
 - SSR con PUG + API REST con Express.
@@ -216,6 +226,8 @@ RUTAS WEB (SSR)
 - Middlewares reutilizables (`verifyToken`, `requireRole`).
 - Manejo centralizado de errores con `statusCode` propagado.
 - Sequelize con `sync({ alter: true })` en desarrollo.
+
+---
 
 ## 🧪 Testing
 Se han realizado pruebas manuales sobre los flujos críticos:
@@ -227,6 +239,8 @@ Se han realizado pruebas manuales sobre los flujos críticos:
 - Navegación completa con teclado.
 - Reflujo a 320 px sin scroll horizontal.
 
+---
+
 ## 🔮 Mejoras a futuro
 - Subida de imágenes propias por itinerario.
 - Filtros y paginación en la lista.
@@ -236,6 +250,8 @@ Se han realizado pruebas manuales sobre los flujos críticos:
 - Testing automatizado (Jest + Supertest).
 - Documentación API con Swagger / OpenAPI.
 
+---
+
 ## 🤖 Uso de IA en el desarrollo
 
 Se ha utilizado **Claude (Anthropic)** como herramienta de apoyo durante el desarrollo: resolución de dudas técnicas, depuración de errores y apoyo en la redacción de la documentación.
@@ -243,6 +259,8 @@ Se ha utilizado **Claude (Anthropic)** como herramienta de apoyo durante el desa
 Las decisiones de arquitectura, diseño funcional y UX se han mantenido bajo criterio propio. La autoría intelectual del proyecto es plenamente personal.
 
 Detalles ampliados en la sección 9 de la memoria técnica.
+
+---
 
 ## 👩‍💻 Autoría
 Olatz González García — [@olatzglez](https://github.com/olatzglez)
