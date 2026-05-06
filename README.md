@@ -48,32 +48,31 @@ La aplicación cuenta con:
 ## Estructura del proyecto
 
 ```
-.
+SignaTour/
+├── db/
 ├── public/
 │   ├── css/
-│   ├── js/
-│   └── images/
-│       ├── ciudades/
-│       └── logo/
+│   ├── images/
+│   └── js/
 ├── src/
 │   ├── config/
 │   ├── constants/
 │   ├── controllers/
-│   │   ├── api/
-│   │   └── web/
 │   ├── middlewares/
 │   ├── models/
 │   ├── routes/
-│   │   ├── api/
-│   │   └── web/
 │   ├── seeders/
 │   ├── services/
 │   └── views/
+├── .env
+├── .env.example
+├── .gitignore
 ├── docker-compose.yml
+├── memoria_SignaTour.pdf
+├── package-lock.json
 ├── package.json
 └── README.md
 ```
-
 
 ---
 
