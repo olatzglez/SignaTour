@@ -6,7 +6,7 @@
 .hero {
   text-align: center;
   padding: 3rem 1rem 2.5rem;
-  background: linear-gradient(180deg, rgba(216, 243, 220, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%), url(/images/hero/img-hero.jpg);
+  background: linear-gradient(180deg, rgba(216, 243, 220, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%), url(../images/hero/img-hero.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

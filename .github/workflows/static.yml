@@ -1,4 +1,4 @@
-name: Deploy React to GitHub Pages
+name: Publicar SignaTour en GitHub Pages
 
 on:
   push:
@@ -21,30 +21,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Descargar el repositorio
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        working-directory: signatour-react
-        run: npm install
-
-      - name: Build
-        working-directory: signatour-react
-        run: npm run build
-
-      - name: Setup Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Subir carpeta public como artefacto
         uses: actions/upload-pages-artifact@v3
         with:
-          path: signatour-react/dist
+          path: public
 
-      - name: Deploy to GitHub Pages
+      - name: Desplegar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

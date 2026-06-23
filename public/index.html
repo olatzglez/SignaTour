@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma de itinerarios culturales accesibles">
+  <title>Inicio · SignaTour</title>
+  <link rel="icon" type="image/png" href="images/logo/favicon_SignaTour.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera-contenedor">
+
+      <a class="logo" href="#">
+        <span class="logo-icono"></span>
+      </a>
+
+      <nav class="nav-central" aria-label="Navegación principal">
+        <a class="nav-link" href="#">Itinerarios</a>
+        <a class="nav-link" href="#">Ciudades</a>
+        <a class="nav-link" href="#">Recursos accesibles</a>
+      </nav>
+
+      <div class="menu-usuario">
+        <button class="boton-avatar" type="button" id="botonAvatar" aria-haspopup="true" aria-expanded="false" aria-label="Abrir menú de usuario">
+          <span class="avatar-icono">☰</span>
+        </button>
+
+        <div class="dropdown" id="menuDropdown" hidden>
+          <ul class="dropdown-lista">
+            <li><a href="#">Iniciar sesión</a></li>
+            <li><a href="#">Crear cuenta</a></li>
+            <li class="divisor"></li>
+            <li><a href="#">Itinerarios</a></li>
+            <li><a href="#">Ciudades</a></li>
+            <li><a href="#">Recursos accesibles</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-lateral-overlay" id="menuLateralOverlay"></div>
+
+    <aside class="menu-lateral" id="menuLateral" aria-hidden="true">
+      <div class="menu-lateral-cabecera">
+        <span>Menú</span>
+        <button class="boton-cerrar-menu" type="button" id="botonCerrarMenu" aria-label="Cerrar menú">×</button>
+      </div>
+      <nav aria-label="Navegación móvil">
+        <a href="#" class="activo">Inicio</a>
+        <a href="#">Itinerarios</a>
+        <a href="#">Recursos accesibles</a>
+      </nav>
+    </aside>
+
+    <script src="js/header.js"></script>
+  </header>
+
+  <main id="contenido" class="contenido">
+
+    <section class="hero">
+      <h1>Cultura accesible para todas las personas</h1>
+      <p>Descubre itinerarios culturales adaptados con lengua de signos, subtítulos, signoguías, bucle magnético y lectura fácil.</p>
+      <a class="boton-primario" href="#">Ver itinerarios</a>
+    </section>
+
+    <section class="seccion-home">
+      <div class="seccion-cabecera">
+        <h2>Itinerarios destacados</h2>
+        <p class="subtitulo">Selección de rutas accesibles para descubrir.</p>
+      </div>
+
+      <ul class="tarjetas">
+        <li class="tarjeta tarjeta--con-imagen">
+          <div class="tarjeta-imagen" style="background-image: url('images/ciudades/bilbao.jpg')"></div>
+          <div class="tarjeta-cuerpo">
+            <h3 class="tarjeta-titulo"><a href="#">Arte accesible en el Guggenheim</a></h3>
+            <p class="tarjeta-ciudad">Bilbao, Vizcaya</p>
+            <p class="tarjeta-descripcion">Un recorrido por el Museo Guggenheim con guía en lengua de signos, audiodescripción y bucle magnético.</p>
+            <div class="tarjeta-meta">
+              <span class="meta publico-todos"><span class="icono">👥</span> Todos</span>
+              <span class="meta"><span class="icono">⏱</span> 90 min</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--con-imagen">
+          <div class="tarjeta-imagen" style="background-image: url('images/ciudades/madrid.jpg')"></div>
+          <div class="tarjeta-cuerpo">
+            <h3 class="tarjeta-titulo"><a href="#">El Prado para todas las personas</a></h3>
+            <p class="tarjeta-ciudad">Madrid, Madrid</p>
+            <p class="tarjeta-descripcion">Visita guiada al Museo del Prado con subtítulos, lengua de signos y lectura fácil.</p>
+            <div class="tarjeta-meta">
+              <span class="meta publico-todos"><span class="icono">👥</span> Todos</span>
+              <span class="meta"><span class="icono">⏱</span> 120 min</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--con-imagen">
+          <div class="tarjeta-imagen" style="background-image: url('images/ciudades/sevilla.jpg')"></div>
+          <div class="tarjeta-cuerpo">
+            <h3 class="tarjeta-titulo"><a href="#">Barrio de Santa Cruz accesible</a></h3>
+            <p class="tarjeta-ciudad">Sevilla, Sevilla</p>
+            <p class="tarjeta-descripcion">Itinerario por el casco histórico de Sevilla con signoguía y recursos de lectura fácil.</p>
+            <div class="tarjeta-meta">
+              <span class="meta publico-todos"><span class="icono">👥</span> Todos</span>
+              <span class="meta"><span class="icono">⏱</span> 75 min</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="seccion-pie">
+        <a class="boton-primario" href="#">Todos los itinerarios</a>
+      </div>
+    </section>
+
+    <section class="seccion-home">
+      <div class="seccion-cabecera">
+        <h2>Ciudades</h2>
+        <p class="subtitulo">Explora itinerarios por destino.</p>
+      </div>
+
+      <ul class="tarjetas">
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/barcelona.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Barcelona</h3>
+            <p class="tarjeta-ciudad">Barcelona</p>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/bilbao.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Bilbao</h3>
+            <p class="tarjeta-ciudad">Vizcaya</p>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/donostia-san-sebastian.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Donostia / San Sebastián</h3>
+            <p class="tarjeta-ciudad">Gipuzkoa</p>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/granada.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Granada</h3>
+            <p class="tarjeta-ciudad">Granada</p>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/madrid.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Madrid</h3>
+            <p class="tarjeta-ciudad">Madrid</p>
+          </div>
+        </li>
+
+        <li class="tarjeta tarjeta--ciudad" style="background-image: url('images/ciudades/sevilla.jpg')">
+          <div class="tarjeta-ciudad-overlay"></div>
+          <div class="tarjeta-ciudad-contenido">
+            <h3 class="tarjeta-titulo">Sevilla</h3>
+            <p class="tarjeta-ciudad">Sevilla</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="seccion-pie">
+        <a class="boton-primario" href="#">Todas las ciudades</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="pie-contenedor">
+      <p>© 2026 SignaTour</p>
+      <p>Proyecto Full Stack hecho por <a href="https://github.com/olatzglez" target="_blank" rel="noopener noreferrer">Olatz González</a></p>
+      <p>Hecho con cariño y ayuda de ClaudIA</p>
+    </div>
+  </footer>
+</body>
+</html>
